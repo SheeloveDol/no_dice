@@ -29,15 +29,19 @@ class DicePage extends StatelessWidget {
         // Expanded is a widget that takes up as much space as it can from the main axis of its parent.
         Expanded(
           // Image.asset is the shorthand for Image(image: AssetImage('images/dice1.png'))
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
+          child: TextButton(
             child: Image.asset('images/dice1.png'),
+            onPressed: () {
+              print('Left button got pressed.');
+            },
           ),
         ),
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
+          child: TextButton(
             child: Image.asset('images/dice2.png'),
+            onPressed: () {
+              print('Right button got pressed.');
+            },
           ),
         ),
       ]),
