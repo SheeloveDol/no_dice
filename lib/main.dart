@@ -33,9 +33,11 @@ class _DicePageState extends State<DicePage> {
   int rightDiceNumber = 6;
 
   // This method returns a random number between 1 and 6. We use it to change the state of the left dice.
-  int getRandomNumberForDice() {
-    final random = Random();
-    return random.nextInt(6) + 1;
+  void getRandomNumberForDice() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
   }
 
   @override
@@ -51,10 +53,7 @@ class _DicePageState extends State<DicePage> {
             onPressed: () {
               // Here we change the state of the left dice to a random number between 1 and 6.
               // setState is a method that tells Flutter to rerun the build method with the updated state.
-              setState(() {
-                leftDiceNumber = getRandomNumberForDice();
-                rightDiceNumber = getRandomNumberForDice();
-              });
+              getRandomNumberForDice();
             },
           ),
         ),
@@ -62,12 +61,7 @@ class _DicePageState extends State<DicePage> {
           child: TextButton(
             child: Image.asset('images/dice$rightDiceNumber.png'),
             onPressed: () {
-              setState(
-                () {
-                  rightDiceNumber = getRandomNumberForDice();
-                  leftDiceNumber = getRandomNumberForDice();
-                },
-              );
+              getRandomNumberForDice();
             },
           ),
         ),
